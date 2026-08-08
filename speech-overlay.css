@@ -1,0 +1,1 @@
+.answer-reveal{position:fixed!important;z-index:95;left:50%;top:50%;width:min(620px,calc(100% - 30px));margin:0!important;transform:translate(-50%,-50%);backdrop-filter:blur(12px)}

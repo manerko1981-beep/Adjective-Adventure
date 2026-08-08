@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#060a2b">
+  <title>Grammar Galaxy — Comparative &amp; Superlative Adjectives</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .game-card .button {
+      background: linear-gradient(135deg, #168cff, #7048ed);
+      box-shadow: 0 8px 22px #315ed733;
+    }
+    .game-card.locked{filter:saturate(.25) brightness(.68);cursor:not-allowed}.game-card.locked:hover{transform:none}.game-card.locked .cover:before{content:"🔒";position:absolute;z-index:5;inset:0;display:grid;place-items:center;background:#05082499;font-size:48px}.game-card.completed{box-shadow:0 0 30px #4be8a844,0 22px 55px #01031d99}#resetProgress{margin-left:8px;border:1px solid #ffffff20;border-radius:10px;padding:7px 10px;color:#9eabd2;background:#ffffff08;font:700 12px Nunito;cursor:pointer}
+    .card-copy{padding-top:27px}.game-emblem{position:absolute;right:20px;top:14px;width:58px;height:58px;filter:drop-shadow(0 8px 14px #0008)}.how-card-btn{margin-bottom:10px;border:1px solid #ffffff26;border-radius:12px;padding:10px 13px;color:#dce6ff;background:#ffffff09;font:900 12px Nunito;cursor:pointer;text-transform:uppercase}.how-card-btn:hover{background:#ffffff18}.home-modal{position:fixed;z-index:100;inset:0;display:grid;place-items:center;padding:18px;background:#02051bdc;backdrop-filter:blur(10px)}.home-modal-card{width:min(520px,100%);padding:28px;border:1px solid #647dff;border-radius:26px;text-align:center;background:linear-gradient(145deg,#11194c,#080c2e);box-shadow:0 30px 90px #000}.home-modal-card img{width:78px}.home-modal-card h2{font-size:32px;margin:8px}.home-modal-card p{color:#c7d1f0;line-height:1.6}.home-example{margin:16px 0;padding:14px;border-radius:14px;text-align:left;background:#ffffff09;line-height:1.8}.home-modal-card button,.home-modal-card a{display:inline-block;margin:4px;border:0;border-radius:12px;padding:12px 17px;color:#fff;background:#ffffff12;font:900 13px Nunito;text-decoration:none;cursor:pointer}.home-modal-card a{background:linear-gradient(135deg,#168cff,#7048ed)}
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Adjective Adventure — Home">
+      <span class="brand-rocket">🚀</span>
+      <span><b>Grammar</b><strong>GALAXY</strong></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a class="active" href="#top">⌂ <span>Home</span></a>
+      <a href="#games">🎮 <span>Games</span></a>
+      <a href="#progress">★ <span>Progress</span></a>
+    </nav>
+    <div class="player"><span class="score">⭐ <b>1,250</b></span><span class="avatar">👨‍🚀</span><span><b>Alex</b><small>Level 12</small></span></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+      <p class="kicker">🚀 ONE BIG ADVENTURE</p>
+      <h1>Grammar Galaxy.<br><em>Comparative &amp; Superlative Adjectives</em></h1>
+      <p>Choose your mission and master adjective forms!</p>
+      <a class="hero-cta" href="#games">Choose a mission <span>↓</span></a>
+      <div class="planet planet-a"></div><div class="planet planet-b"></div>
+    </section>
+
+    <section class="missions" id="games">
+      <div class="section-heading"><span></span><div><p>CHOOSE YOUR MISSION</p><h2>Three games. One grammar galaxy.</h2></div><span></span></div>
+      <div class="game-grid">
+        <a class="game-card cyan" data-level="1" href="game1.html" aria-label="Open Grammar Shooter">
+          <div class="cover"><img src="assets/rocket-words.jpg" alt="A rocket flying through colorful letters"><span class="level">Levels 1–5</span><span class="reward">⭐ 180</span><span class="play-icon">▶</span></div>
+          <div class="card-copy"><img class="game-emblem" src="assets/shooter-emblem.svg" alt="Grammar Shooter emblem"><span class="category">LEVEL 1 · COMPARATIVES</span><h3>Grammar Shooter</h3><p>Aim and shoot the right comparative!</p><button class="how-card-btn" data-how="1">How to play</button><span class="button">Play <b>→</b></span></div>
+        </a>
+        <a class="game-card violet" data-level="2" href="game2.html" aria-label="Open Treasure Quest">
+          <div class="cover"><img src="assets/galaxy-grammar.jpg" alt="An astronaut robot with glowing cards"><span class="level">Levels 6–10</span><span class="reward">⭐ 260</span><span class="play-icon">▶</span></div>
+          <div class="card-copy"><img class="game-emblem" src="assets/treasure-emblem.svg" alt="Treasure Quest emblem"><span class="category">LEVEL 2 · SUPERLATIVES</span><h3>Treasure Quest</h3><p>Open the map and find the Superlative Crown!</p><button class="how-card-btn" data-how="2">How to play</button><span class="button">Play <b>→</b></span></div>
+        </a>
+        <a class="game-card teal" data-level="3" href="game3.html" aria-label="Open Boss Battle">
+          <div class="cover"><img src="assets/reading-quest.jpg" alt="A young explorer reading a magic map"><span class="level">Levels 11–15</span><span class="reward">⭐ 320</span><span class="play-icon">▶</span></div>
+          <div class="card-copy"><img class="game-emblem" src="assets/boss-emblem.svg" alt="Boss Battle emblem"><span class="category">LEVEL 3 · MIXED FORMS</span><h3>Boss Battle</h3><p>Type the right form and defeat the dragon!</p><button class="how-card-btn" data-how="3">How to play</button><span class="button">Play <b>→</b></span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="progress-panel" id="progress">
+      <span class="medal">⭐</span><div><b>Your progress</b><small>Keep going, Explorer!</small></div><div class="bar"><i></i></div><b>750 / 1,000 XP</b><span class="divider"></span><span class="chest">🎁</span><div><b>Next reward</b><small>Star Chest at Level 15</small></div>
+    </section>
+  </main>
+  <footer>Grammar Galaxy · Learn and play ✦ <button id="resetProgress">Reset progress</button></footer>
+  <script>
+    const galaxyState=JSON.parse(localStorage.getItem('grammarGalaxy')||'{"unlocked":1,"xp":0,"completed":{}}');
+    document.querySelectorAll('[data-level]').forEach(card=>{const level=Number(card.dataset.level);if(level>galaxyState.unlocked){card.classList.add('locked');card.setAttribute('aria-disabled','true');card.addEventListener('click',event=>event.preventDefault());card.querySelector('.button').innerHTML='🔒 Locked';}else if(galaxyState.completed[level]){card.classList.add('completed');card.querySelector('.button').innerHTML='✓ Play again <b>→</b>';}});
+    document.querySelector('.player .score b').textContent=(galaxyState.xp||0).toLocaleString('en-US');
+    document.getElementById('resetProgress').onclick=()=>{if(confirm('Reset all game progress?')){localStorage.removeItem('grammarGalaxy');location.reload()}};
+    const howInfo={1:{name:'Grammar Shooter',icon:'assets/shooter-emblem.svg',url:'game1.html',text:'Shoot the moving target with the correct comparative form.',example:'A mouse is ___ than an elephant.<br>🎯 small · smaller · smallest'},2:{name:'Treasure Quest',icon:'assets/treasure-emblem.svg',url:'game2.html',text:'Choose the correct superlative and open the next map sector.',example:'This is ___ room in the house.<br>💎 the smaller · the smallest · the most small'},3:{name:'Boss Battle',icon:'assets/boss-emblem.svg',url:'game3.html',text:'Fight through three phases and remove all 15 Boss HP.',example:'Choose forms first, then type answers.<br>⚔️ Correct = -1 Boss HP'}};
+    document.querySelectorAll('.how-card-btn').forEach(button=>button.onclick=event=>{event.preventDefault();event.stopPropagation();const level=Number(button.dataset.how),info=howInfo[level],locked=level>galaxyState.unlocked,modal=document.createElement('div');modal.className='home-modal';modal.innerHTML=`<div class="home-modal-card"><img src="${info.icon}" alt=""><small>HOW TO PLAY</small><h2>${info.name}</h2><p>${info.text} Correct answers give XP and build your streak. Complete all 15 questions.</p><div class="home-example">${info.example}</div><button class="modal-close">CLOSE</button>${locked?'<button disabled>🔒 LOCKED</button>':`<a href="${info.url}">START GAME</a>`}</div>`;document.body.appendChild(modal);modal.querySelector('.modal-close').onclick=()=>modal.remove();modal.onclick=e=>{if(e.target===modal)modal.remove()}});
+  </script>
+</body>
+</html>
+

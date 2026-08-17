@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Spotlight 4 PRE-01 — Read & Choose</title>
+<style>
+  :root{--bg:#f6fbff;--card:#ffffff;--ink:#17324d;--muted:#5e7286;--accent:#3569c8;--ok:#1a7f5a;--bad:#b54444;--line:#d9e6f3;--soft:#edf5ff;}
+  *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(180deg,#eef7ff 0%,#fbfdff 100%);color:var(--ink);min-height:100vh}
+  .app{max-width:980px;margin:auto;padding:22px}
+  .top{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:14px}
+  h1{font-size:clamp(22px,3.4vw,36px);margin:0;line-height:1.05}
+  .sub{color:var(--muted);font-weight:600;margin-top:6px}
+  .score{background:#fff;border:2px solid var(--line);border-radius:16px;padding:10px 14px;font-weight:800;box-shadow:0 5px 16px #17324d10}
+  .bar{height:12px;background:#e6eef7;border-radius:999px;overflow:hidden;margin:14px 0 20px}.fill{height:100%;width:0;background:linear-gradient(90deg,#4f8ce8,#6eb7f7);transition:.25s}
+  .card{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:clamp(20px,4vw,34px);box-shadow:0 12px 30px #17324d12}
+  .tag{display:inline-block;background:var(--soft);color:var(--accent);font-weight:900;border-radius:999px;padding:7px 12px;margin-bottom:14px}
+  .prompt{font-size:clamp(23px,3.4vw,36px);line-height:1.35;font-weight:800;margin:4px 0 24px}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  button.option{appearance:none;border:2px solid var(--line);background:#fff;color:var(--ink);border-radius:18px;padding:18px 16px;font-size:clamp(18px,2.6vw,24px);font-weight:800;cursor:pointer;transition:.15s;text-align:left}
+  button.option:hover{transform:translateY(-2px);border-color:#8eb8ef;background:#f8fbff}
+  button.option:disabled{cursor:default;transform:none}
+  .correct{border-color:#58b690!important;background:#edf9f4!important;color:#106342!important}.wrong{border-color:#d78b8b!important;background:#fff1f1!important;color:#923838!important}
+  .feedback{min-height:74px;margin-top:18px;padding:14px 16px;border-radius:16px;background:#f7fafc;border:1px solid var(--line);font-size:17px;line-height:1.35}
+  .feedback strong{display:block;font-size:20px;margin-bottom:5px}
+  .speak{margin-top:12px;padding:12px 14px;background:#fff8e8;border:1px solid #efd18a;border-radius:14px;font-weight:800;color:#6b5013}
+  .actions{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}.next,.restart{border:0;border-radius:15px;padding:13px 20px;background:var(--accent);color:#fff;font-size:17px;font-weight:900;cursor:pointer}.next:disabled{opacity:.35;cursor:not-allowed}.restart{background:#334a61}
+  .finish{text-align:center;padding:24px 8px}.big{font-size:64px}.finish h2{font-size:32px;margin:8px 0}.finish p{font-size:20px;color:var(--muted)}
+  .tip{margin-top:14px;color:var(--muted);font-size:14px;text-align:center}
+  @media(max-width:650px){.options{grid-template-columns:1fr}.app{padding:12px}.card{border-radius:18px}.top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div><h1>Spotlight 4 • Back to English</h1><div class="sub">READ → CHOOSE → SAY</div></div>
+    <div class="score" id="score">Score: 0 / 0</div>
+  </div>
+  <div class="bar"><div class="fill" id="fill"></div></div>
+  <main class="card" id="card"></main>
+  <div class="tip">Teacher tip: after every answer, use the yellow “Say it!” prompt orally.</div>
+</div>
+<script>
+const tasks = [
+ {p:'I can swim, but I ___ fly.',o:['can','can’t'],a:1,s:'Say two things: “I can …, but I can’t … .”',e:'We use can’t for something a person cannot do.'},
+ {p:'Tom has got a bike. ___ bike is red.',o:['His','Her'],a:0,s:'Say: “I have got … . My … is … .”',e:'Tom → his.'},
+ {p:'Read: “Mia gets up at seven o’clock. She has breakfast at half past seven.” When does Mia have breakfast?',o:['7:00','7:30'],a:1,s:'Tell the teacher what time you have breakfast.',e:'Half past seven = 7:30.'},
+ {p:'My sister ___ got a new school bag.',o:['has','have'],a:0,s:'Make one sentence with “has got”.',e:'He / she / it → has got.'},
+ {p:'Read: “Ben is ten. He likes football and computer games. He can ride a bike very well.” What can Ben do?',o:['Ride a bike','Play the piano'],a:0,s:'Say one thing you can do very well.',e:'The text says he can ride a bike very well.'},
+ {p:'We ___ English on Mondays.',o:['have','has'],a:0,s:'Say: “We have … on … .”',e:'With we, use have.'},
+ {p:'Choose the correct question.',o:['Can you swim?','You can swim?'],a:0,s:'Ask the teacher one question with “Can you … ?”',e:'Question form: Can + subject + verb?'},
+ {p:'Read: “Kate has got a brother. His name is Sam. Sam is eight.” Who is eight?',o:['Kate','Sam'],a:1,s:'Say one fact about your family.',e:'The text directly says: Sam is eight.'},
+ {p:'It is 8:00. Choose the correct sentence.',o:['It is eight o’clock.','It is half past eight.'],a:0,s:'Say the current lesson time in English.',e:'8:00 = eight o’clock.'},
+ {p:'Choose the correct sentence.',o:['He can plays football.','He can play football.'],a:1,s:'Make a new sentence: “She can … .”',e:'After can, use the base verb: play, not plays.'},
+ {p:'Read: “Lucy gets home at four. At five she does her homework. Then she plays with her dog.” What does Lucy do at five?',o:['She does her homework.','She plays with her dog.'],a:0,s:'Tell the teacher what you do after school.',e:'At five she does her homework.'},
+ {p:'Choose the best reply: “Can your friend ride a bike?”',o:['Yes, he can.','Yes, he has.'],a:0,s:'Ask and answer one Can-question about a friend.',e:'Can-question → Yes, he can / No, he can’t.'}
+];
+let i=0, good=0, answered=false;
+const card=document.getElementById('card'),score=document.getElementById('score'),fill=document.getElementById('fill');
+function ding(ok){try{const A=window.AudioContext||window.webkitAudioContext;const c=new A();const o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=ok?660:220;g.gain.value=.05;o.start();o.stop(c.currentTime+.09)}catch(e){}}
+function render(){answered=false; if(i>=tasks.length){finish();return} const t=tasks[i];fill.style.width=(i/tasks.length*100)+'%';score.textContent=`Score: ${good} / ${i}`;card.innerHTML=`<div class="tag">Task ${i+1} of ${tasks.length}</div><div class="prompt">${t.p}</div><div class="options">${t.o.map((x,n)=>`<button class="option" data-n="${n}">${x}</button>`).join('')}</div><div class="feedback" id="fb">Read carefully, then choose.</div><div class="actions"><button class="next" id="next" disabled>Next →</button></div>`;card.querySelectorAll('.option').forEach(b=>b.onclick=()=>choose(+b.dataset.n));document.getElementById('next').onclick=()=>{i++;render()}}
+function choose(n){if(answered)return;answered=true;const t=tasks[i],bs=[...card.querySelectorAll('.option')];bs.forEach((b,k)=>{b.disabled=true;if(k===t.a)b.classList.add('correct');if(k===n&&n!==t.a)b.classList.add('wrong')});const ok=n===t.a;if(ok)good++;ding(ok);document.getElementById('fb').innerHTML=`<strong>${ok?'✓ Correct!':'✗ Try to notice the rule.'}</strong>${t.e}<div class="speak">🎤 Say it! ${t.s}</div>`;document.getElementById('next').disabled=false;score.textContent=`Score: ${good} / ${i+1}`;fill.style.width=((i+1)/tasks.length*100)+'%'}
+function finish(){fill.style.width='100%';score.textContent=`Score: ${good} / ${tasks.length}`;let msg=good>=10?'Excellent reading!':good>=7?'Good work — one more round will make it faster.':'Let’s repeat the key sentences once more.';card.innerHTML=`<div class="finish"><div class="big">⭐</div><h2>${good} / ${tasks.length}</h2><p>${msg}</p><div class="speak">🎤 Final speaking: Say 4 sentences about yourself using <b>can / can’t / have got / daily routine</b>.</div><br><button class="restart" id="restart">Play again</button></div>`;document.getElementById('restart').onclick=()=>{i=0;good=0;render()}}
+render();
+</script>
+</body>
+</html>

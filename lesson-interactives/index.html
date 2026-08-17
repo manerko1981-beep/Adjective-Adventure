@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Lesson Interactives Hub</title>
+<style>
+:root{--bg:#f5f9ff;--card:#fff;--ink:#18304a;--muted:#60758b;--blue:#3e72d6;--purple:#7a63d8;--mint:#43aa8b;--line:#dbe8f5;--shadow:0 14px 34px rgba(24,48,74,.12)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:linear-gradient(135deg,#eef6ff,#f8f4ff 55%,#effcf8);color:var(--ink);min-height:100vh}
+.wrap{max-width:1120px;margin:auto;padding:28px 20px 48px}.hero{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:'✦';position:absolute;right:28px;top:12px;font-size:96px;color:#dbe8ff;transform:rotate(10deg)}h1{margin:0 0 10px;font-size:clamp(30px,5vw,52px);line-height:1.05}.lead{font-size:18px;color:var(--muted);max-width:760px;line-height:1.5}.badge{display:inline-block;padding:7px 11px;border-radius:999px;background:#edf4ff;color:var(--blue);font-weight:800;margin:0 8px 8px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 8px 20px rgba(24,48,74,.08)}.card h2{margin:0 0 8px;font-size:22px}.card p{color:var(--muted);line-height:1.45}.course{border-top:5px solid var(--blue)}.course:nth-child(2){border-top-color:var(--purple)}.course:nth-child(3){border-top-color:var(--mint)}.course:nth-child(4){border-top-color:#ef8d4d}.course:nth-child(5){border-top-color:#e8668c}.course:nth-child(6){border-top-color:#5f87b8}.btn{display:inline-block;text-decoration:none;background:var(--blue);color:#fff;padding:11px 15px;border-radius:13px;font-weight:800;margin-top:6px}.btn.secondary{background:#334b62}.section{margin-top:26px}.section h2{font-size:28px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;min-height:130px}.num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#edf4ff;color:var(--blue);font-weight:900;margin-bottom:10px}.small{font-size:14px;color:var(--muted)}code{background:#eef3f8;padding:2px 6px;border-radius:7px}.footer{margin-top:28px;text-align:center;color:var(--muted);font-size:14px}@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid,.steps{grid-template-columns:1fr}.hero{padding:20px}.hero:after{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <span class="badge">HOLST READY</span><span class="badge">IFRAME</span><span class="badge">TEACHER LIBRARY</span>
+    <h1>Lesson Interactives Hub</h1>
+    <p class="lead">Central library of live HTML/JS activities for Spotlight, Starlight and OGE lessons. Each activity should be ready to open, test and embed into Holst with a published URL and iframe code.</p>
+  </section>
+
+  <section class="grid">
+    <article class="card course"><h2>Spotlight 4</h2><p>Reading, grammar, sentence building and speaking follow-up.</p><a class="btn" href="spotlight4-pre01-reading-grammar/">Open PRE-01 test</a></article>
+    <article class="card course"><h2>Spotlight 5</h2><p>High-pace vocabulary, grammar and school-topic mini-games.</p><span class="small">Coming next</span></article>
+    <article class="card course"><h2>Spotlight 6</h2><p>Module-linked interactive practice.</p><span class="small">Coming next</span></article>
+    <article class="card course"><h2>Spotlight 7–10</h2><p>Teen school-support interactives and speaking transfer.</p><span class="small">Library grows lesson by lesson</span></article>
+    <article class="card course"><h2>Starlight</h2><p>School-support practice with scaffolded production.</p><span class="small">Library grows lesson by lesson</span></article>
+    <article class="card course"><h2>OGE</h2><p>Exam-skill interactives: paraphrase, grammar, vocabulary, speaking and reading follow-up.</p><span class="small">Block-based structure</span></article>
+  </section>
+
+  <section class="section">
+    <h2>Standard for every interactive</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><strong>Real activity</strong><p class="small">Not a description. HTML/JS must actually work.</p></div>
+      <div class="step"><div class="num">2</div><strong>Visual finish</strong><p class="small">Age-appropriate design, images/icons where useful, animation and feedback without clutter.</p></div>
+      <div class="step"><div class="num">3</div><strong>Holst-ready</strong><p class="small">Published URL checked, responsive layout, readable inside an iframe.</p></div>
+      <div class="step"><div class="num">4</div><strong>Productive follow-up</strong><p class="small">CLICK → READ → EXPLAIN/TRANSLATE → SAY/MAKE A SENTENCE.</p></div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <h2>Publishing pattern</h2>
+    <p><code>lesson-interactives / course / lesson / activity / index.html</code></p>
+    <p class="small">Example: <code>lesson-interactives/spotlight4/pre01/reading-grammar/index.html</code>. Existing test remains at its current path and can be reorganised later without losing the working proof-of-concept.</p>
+  </section>
+
+  <div class="footer">Lesson Interactives • teacher working library</div>
+</div>
+</body>
+</html>
